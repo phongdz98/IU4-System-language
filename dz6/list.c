@@ -99,6 +99,7 @@ void remove_user(DanhSach *ds, User data)
 {
     if (ds->head == NULL)
     {
+        printf("List is empty\n");
         return;
     }
 
