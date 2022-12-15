@@ -1,0 +1,2 @@
+sudo sh usernopass.sh nopass1 1005 1005 usernopass /home/nopass1 /bin/bash 19567
+cut -d: -f1 /etc/passwd
