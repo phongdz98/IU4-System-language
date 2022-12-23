@@ -3,34 +3,34 @@
 
 void heapify(int arr[], int n, int i, int ascending)
 {
-    int largest = i;
+    int node = i;
     int l = 2 * i + 1;
     int r = 2 * i + 2;
 
     if (ascending)
     {
-        if (l < n && arr[l] < arr[largest])
-            largest = l;
+        if (l < n && arr[l] > arr[node])
+            node = l;
 
-        if (r < n && arr[r] < arr[largest])
-            largest = r;
+        if (r < n && arr[r] > arr[node])
+            node = r;
     }
     else
     {
-        if (l < n && arr[l] > arr[largest])
-            largest = l;
+        if (l < n && arr[l] < arr[node])
+            node = l;
 
-        if (r < n && arr[r] > arr[largest])
-            largest = r;
+        if (r < n && arr[r] < arr[node])
+            node = r;
     }
 
-    if (largest != i)
+    if (node != i)
     {
         int temp = arr[i];
-        arr[i] = arr[largest];
-        arr[largest] = temp;
+        arr[i] = arr[node];
+        arr[node] = temp;
 
-        heapify(arr, n, largest, ascending);
+        heapify(arr, n, node, ascending);
     }
 }
 
