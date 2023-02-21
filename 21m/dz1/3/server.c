@@ -13,9 +13,11 @@ void main(){
     int listenfd = -1; // listen 
     int connfd = -1;   // connect
     struct sockaddr_in server_addr;
+    char recv_buffer[1024]; // buffer for receive
     char send_buffer[1024]; // buffer for sending data
     time_t ticks;
 
+    memset(recv_buffer, 0, sizeof(recv_buffer));
     memset(send_buffer, 0, sizeof(send_buffer));
     memset(&server_addr, 0, sizeof(server_addr));
 
@@ -30,6 +32,8 @@ void main(){
     while(1){
         connfd = accept(listenfd, (struct sockaddr *)NULL, NULL);
         ticks = time(NULL);
+        read(connfd, recv_buffer, sizeof(recv_buffer)-1);
+        printf("\nReceived messeage from client:%s\n", recv_buffer);
         sprintf(send_buffer, "Server reply %s", ctime(&ticks));
         write(connfd, send_buffer, strlen(send_buffer));
         close(connfd);
