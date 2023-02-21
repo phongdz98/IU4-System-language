@@ -31,10 +31,10 @@ void main(){
 
     while(1){
         connfd = accept(listenfd, (struct sockaddr *)NULL, NULL);
-        // struct sockaddr_in client_addr;
-        // int client_len = sizeof(client_addr);
-        // getpeername(connfd, (struct sockaddr*)&client_addr, &client_len);
-        // printf("Client connected with IP address: %s\n", inet_ntoa(client_addr.sin_addr));
+        struct sockaddr_in client_addr;
+        int client_len = sizeof(client_addr);
+        getpeername(connfd, (struct sockaddr*)&client_addr, &client_len);
+        printf("Client connected with IP address: %s\n", inet_ntoa(client_addr.sin_addr));
         ticks = time(NULL);
         read(connfd, recv_buffer, sizeof(recv_buffer)-1);
         printf("\nReceived messeage from client:%s\n", recv_buffer);
