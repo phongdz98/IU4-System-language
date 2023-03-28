@@ -17,15 +17,15 @@ void signal_handler(int code) {
 		case 6:
   		printf ("\nSignal SIGABRT processed\n");
 		break;
-		case 9:
-  		printf ("\nSignal SIGKILL processed\n"); //Cannot be processed
-		break;
+		// case 9:
+  		// printf ("\nSignal SIGKILL processed\n"); //Cannot be processed
+		// break;
 		case 15:
   		printf ("\nSignal SIGTERM processed\n");
 		break;
-		case 19:
-  		printf ("\nSignal SIGSTOP processed\n");//Cannot be processed
-		break;
+		// case 19:
+  		// printf ("\nSignal SIGSTOP processed\n");//Cannot be processed
+		// break;
 		case 20:
   		printf ("\nSignal SIGTSTP processed\n");
 		break;
@@ -34,8 +34,8 @@ void signal_handler(int code) {
 }
 
 int main() {
-    const char *signals[] = {"SIGHUP", "SIGINT", "SIGQUIT", "SIGABRT", "SIGKILL", "SIGTERM", "SIGSTOP", "SIGTSTP"};
-    int signal_nums[] = {SIGHUP, SIGINT, SIGQUIT, SIGABRT, SIGKILL, SIGTERM, SIGSTOP, SIGTSTP};
+    const char *signals[] = {"SIGHUP", "SIGINT", "SIGQUIT", "SIGABRT","SIGTERM", "SIGTSTP"};
+    int signal_nums[] = {SIGHUP, SIGINT, SIGQUIT, SIGABRT, SIGTERM, SIGTSTP};
 
     printf("Use \"kill 'signal' 'pid'\" to send me a signal\n");
     printf("Available signals:\n");

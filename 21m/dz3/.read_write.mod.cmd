@@ -1,0 +1,1 @@
+cmd_/home/phong/My_projects/DEMID/IU4-System-language/21m/dz3/read_write.mod := printf '%s\n'   read_write.o | awk '!x[$$0]++ { print("/home/phong/My_projects/DEMID/IU4-System-language/21m/dz3/"$$0) }' > /home/phong/My_projects/DEMID/IU4-System-language/21m/dz3/read_write.mod

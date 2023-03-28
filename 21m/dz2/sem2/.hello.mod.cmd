@@ -1,0 +1,1 @@
+cmd_/home/phong/My_projects/DEMID/IU4-System-language/21m/dz2/sem2/hello.mod := printf '%s\n'   hello.o | awk '!x[$$0]++ { print("/home/phong/My_projects/DEMID/IU4-System-language/21m/dz2/sem2/"$$0) }' > /home/phong/My_projects/DEMID/IU4-System-language/21m/dz2/sem2/hello.mod
