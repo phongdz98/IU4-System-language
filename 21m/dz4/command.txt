@@ -6,10 +6,15 @@ sudo dmesg | tail
 ls /proc/hello
 echo "Hello from userspace" > /proc/hello/phong
 sudo dmesg | tail
+cat /proc/hello/phong
 sudo rmmod dz4
 sudo dmesg | tail
 ls /proc/hello/phong -al
 
 
-@ Procfs:dz4-1
+@ Sysfs:dz4-2
+tuong tu voi sys/kernel/hello/phong
+
+
+
 
