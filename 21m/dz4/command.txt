@@ -1,0 +1,15 @@
+@ Procfs:dz4
+
+make
+sudo insmod dz4.ko
+sudo dmesg | tail
+ls /proc/hello
+echo "Hello from userspace" > /proc/hello/phong
+sudo dmesg | tail
+sudo rmmod dz4
+sudo dmesg | tail
+ls /proc/hello/phong -al
+
+
+@ Procfs:dz4-1
+
