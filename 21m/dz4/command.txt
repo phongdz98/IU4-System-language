@@ -6,7 +6,7 @@ sudo dmesg | tail
 ls /proc/hello
 echo "Hello from userspace" > /proc/hello/phong
 sudo dmesg | tail
-cat /proc/hello/phong
+cat /proc/hello/phong | head -n 1
 sudo rmmod dz4
 sudo dmesg | tail
 ls /proc/hello/phong -al
