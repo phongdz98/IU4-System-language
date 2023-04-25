@@ -1,0 +1,1 @@
+cmd_/home/phong/My_projects/DEMID/IU4-System-language/21m/dz5/example/chrdev/Module.symvers := sed 's/ko$$/o/' /home/phong/My_projects/DEMID/IU4-System-language/21m/dz5/example/chrdev/modules.order | scripts/mod/modpost -m -a  -o /home/phong/My_projects/DEMID/IU4-System-language/21m/dz5/example/chrdev/Module.symvers -e -i Module.symvers   -T -
