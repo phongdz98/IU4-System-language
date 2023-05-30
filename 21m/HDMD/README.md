@@ -1,3 +1,4 @@
+* Test:
     ```sh
 $ make
 $ make install
