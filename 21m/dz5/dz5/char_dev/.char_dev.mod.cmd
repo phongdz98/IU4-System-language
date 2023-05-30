@@ -1,1 +1,0 @@
-cmd_/home/phong/My_projects/DEMID/IU4-System-language/21m/dz5/dz5/char_dev/char_dev.mod := printf '%s\n'   char_dev.o | awk '!x[$$0]++ { print("/home/phong/My_projects/DEMID/IU4-System-language/21m/dz5/dz5/char_dev/"$$0) }' > /home/phong/My_projects/DEMID/IU4-System-language/21m/dz5/dz5/char_dev/char_dev.mod
