@@ -1,1 +1,0 @@
-cmd_/home/phong/My_projects/DEMID/IU4-System-language/21m/dz3/modules.order := {   echo /home/phong/My_projects/DEMID/IU4-System-language/21m/dz3/read_write.ko; :; } | awk '!x[$$0]++' - > /home/phong/My_projects/DEMID/IU4-System-language/21m/dz3/modules.order

@@ -2,6 +2,7 @@
     "C_Cpp.errorSquiggles": "disabled",
     "files.associations": {
         "inet.h": "c",
-        "stdlib.h": "c"
+        "stdlib.h": "c",
+        "yhook.h": "c"
     }
 }
