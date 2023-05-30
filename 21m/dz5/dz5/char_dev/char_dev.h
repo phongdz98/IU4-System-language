@@ -8,3 +8,4 @@
 #define CLEAR_DATA _IO('a', 'd')
 
 #endif
+//nhap
