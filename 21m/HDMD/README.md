@@ -12,5 +12,7 @@
     cat list
     netstat -tulnp
     sudo echo "631" > /sys/kernel/hide/port/del     
-    netstat -tulnp  
+    netstat -tulnp
+    make uninstall
+    make clean  
     ```
