@@ -1,4 +1,4 @@
-MODULE = yark
+MODULE = phong
 obj-m += $(MODULE).o
 $(MODULE)-objs := main.o yhook.o
 

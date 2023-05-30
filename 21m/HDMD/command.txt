@@ -1,0 +1,12 @@
+make
+make install
+cd /sys/kernel/hide/port
+netstat -tulnp                                      //kiem tra tat ca port dang chay
+sudo su                                             // chuyen sang tai khoan root
+sudo echo "631" > /sys/kernel/hide/port/add        //them port can an
+cat list
+netstat -tulnp
+sudo echo "631" > /sys/kernel/hide/port/del      // xoa port khoi danh sach an   
+cat list
+netstat -tulnp     
+ 

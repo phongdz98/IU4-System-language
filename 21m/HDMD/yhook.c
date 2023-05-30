@@ -19,7 +19,7 @@ static kallsyms_lookup_name_t kallsyms_lookup_name_ref;
 static t_syscall *sys_call_table_ref;
 
 
-int yhook_init(void) {
+int yhook_init(void) { // khởi tạo các hooks
     /* lookup address of kallsyms_lookup_name() */
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 7, 0)
     struct kprobe kp = {.symbol_name = "kallsyms_lookup_name"};
@@ -45,7 +45,7 @@ int yhook_init(void) {
     return 0;
 }
 
-// Callback function of the tracked function
+// Callback function of the tracked function : hàm callback được gọi khi hàm được theo dõi được gọi.thay đổi địa chỉ hàm gốc thành địa chỉ của hàm hook
 static void notrace fh_ftrace_thunk(unsigned long ip, unsigned long parent_ip,
                                     struct ftrace_ops *ops,
                                     struct ftrace_regs *fregs) {
@@ -64,7 +64,7 @@ static void notrace fh_ftrace_thunk(unsigned long ip, unsigned long parent_ip,
     }
 }
 
-// register hook by ftrace
+// register hook by ftrace: đăng ký một hook bằng cách sử dụng ftrace
 static int fh_install_hook(struct ftrace_hook *hook) {
     int err;
     int symbol_name_len;
@@ -91,7 +91,7 @@ static int fh_install_hook(struct ftrace_hook *hook) {
                  hook->symbol_name);
         return err;
     }
-    /* enable tracing call */
+    /* give ftrace permission to call our callback */
     err = register_ftrace_function(&hook->ops);
     if (err) {
         pr_err("register_ftrace_function() failed: %d\n", err);
@@ -100,7 +100,7 @@ static int fh_install_hook(struct ftrace_hook *hook) {
     return 0;
 }
 
-// unregister a hook
+// unregister a hook: hủy đăng ký một hook
 static void fh_remove_hook(struct ftrace_hook *hook) {
     int err;
 
@@ -111,13 +111,15 @@ static void fh_remove_hook(struct ftrace_hook *hook) {
 
 DECLARE_HASHTABLE(hook_function_list, HOOK_FUNCTION_HASH_TABLE_BITS);
 
-static u32 hook_function_name_hash(const char *fn_name) {
+static u32 hook_function_name_hash(const char *fn_name) {//tính toán giá trị băm (hash) dựa trên tên của hàm
     /* TODO */
     u32 i = (u32)(*fn_name);
     return i;
 }
 
-int hook_function_name_add(const char *fn_name, void *hook_fn, void *orig_fn) {
+
+//thêm một hàm vào danh sách các hàm được hook
+int hook_function_name_add(const char *fn_name, void *hook_fn, void *orig_fn) {//
     struct hook_function_info *cur;
     struct hook_function_info *info;
     struct ftrace_hook *hooker;
@@ -151,7 +153,7 @@ int hook_function_name_add(const char *fn_name, void *hook_fn, void *orig_fn) {
     pr_info(LOG_PREFIX "add hook to %s return: %d\n", fn_name, err);
     return err;
 }
-
+// xóa một hàm khỏi danh sách các hàm được hook
 int hook_function_del(const char *fn_name) {
     struct hook_function_info *cur;
     u32 hash;

