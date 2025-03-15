@@ -23,6 +23,7 @@ Node *createNode(User data);
 void addTail(DanhSach *ds, User data);
 void remove_user(DanhSach *ds, User data);
 void printList(DanhSach ds);
+void searchUser(DanhSach ds, char name[]);
 
 int main()
 {
@@ -36,7 +37,8 @@ int main()
         printf("1. Add user\n");
         printf("2. Remove user\n");
         printf("3. Print list\n");
-        printf("4. Exit\n");
+        printf("4. Search user\n");
+        printf("5. Exit\n");
         printf("Enter your option: ");
         scanf("%d", &option);
 
@@ -59,6 +61,11 @@ int main()
             printList(ds);
             break;
         case 4:
+            printf("Enter user name to search: ");
+            scanf("%s", user.name);
+            searchUser(ds, user.name);
+            break;
+        case 5:
             exit(0);
             return 0;
         default:
@@ -141,5 +148,23 @@ void printList(DanhSach ds)
     {
         printf("%s - %s\n", current->data.name, current->data.phone);
         current = current->next;
+    }
+}
+
+void searchUser(DanhSach ds, char name[]) {
+    Node *current = ds.head;
+    int found = 0;
+    
+    while (current != NULL) {
+        if (strcmp(current->data.name, name) == 0) {
+            printf("Found user: %s - %s\n", current->data.name, current->data.phone);
+            found = 1;
+            break;
+        }
+        current = current->next;
+    }
+    
+    if (!found) {
+        printf("User not found\n");
     }
 }
